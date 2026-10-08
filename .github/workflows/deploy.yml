@@ -31,10 +31,6 @@ jobs:
         run: npm ci
 
       - name: Build
-        env:
-          # Remove this when pitre.com DNS points at GitHub Pages.
-          # Production then builds at the domain root.
-          PAGES_BASE: /pitre.com
         run: npm run build
 
       - name: Upload Pages artifact

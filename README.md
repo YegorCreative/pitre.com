@@ -13,7 +13,7 @@ The repository that already existed is [YegorCreative/pitre.com](https://github.
 
 `astro.config.ts` sets `output` to `static`. The production site is `https://pitre.com` with no base path.
 
-Until DNS points at GitHub Pages, the Actions build sets `PAGES_BASE=/pitre.com` so assets resolve at `https://yegorcreative.github.io/pitre.com/`. Canonical links still use `https://pitre.com`. When the domain is connected, remove `PAGES_BASE` from the workflow so the production build is served from the domain root.
+DNS for `pitre.com` points at GitHub Pages, so the production build uses the domain root. Do not set `PAGES_BASE`. Canonical links are `https://pitre.com`.
 
 ## Develop
 
