@@ -11,7 +11,9 @@ The repository that already existed is [YegorCreative/pitre.com](https://github.
 - Tailwind CSS
 - GitHub Actions → GitHub Pages
 
-`astro.config.ts` sets `site` to `https://pitre.com` and `output` to `static`. The production base path is the domain root. It is not `/pitre/` or `/pitre.com/`.
+`astro.config.ts` sets `output` to `static`. The production site is `https://pitre.com` with no base path.
+
+Until DNS points at GitHub Pages, the Actions build sets `PAGES_BASE=/pitre.com` so assets resolve at `https://yegorcreative.github.io/pitre.com/`. Canonical links still use `https://pitre.com`. When the domain is connected, remove `PAGES_BASE` from the workflow so the production build is served from the domain root.
 
 ## Develop
 

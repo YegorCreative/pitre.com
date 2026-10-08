@@ -18,8 +18,14 @@ const {
   preload,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site);
-const imageUrl = new URL(image, Astro.site);
+const base = import.meta.env.BASE_URL;
+let path = Astro.url.pathname;
+if (base !== "/" && path.startsWith(base)) {
+  path = path.slice(base.length - 1) || "/";
+}
+if (!path.startsWith("/")) path = `/${path}`;
+const canonical = new URL(path, "https://pitre.com");
+const imageUrl = new URL(`${base}${image.replace(/^\//, "")}`, Astro.site);
 const fullTitle = title === site.title ? title : `${title} · ${site.name}`;
 ---
 
@@ -31,7 +37,7 @@ const fullTitle = title === site.title ? title : `${title} · ${site.name}`;
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical.href} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
     <meta name="theme-color" content="#163646" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={site.name} />
