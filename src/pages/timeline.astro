@@ -1,0 +1,56 @@
+---
+import Base from "../layouts/Base.astro";
+import { eras, href, roles } from "../data/site";
+
+const ordered = [...roles].sort((a, b) => a.sort.localeCompare(b.sort));
+---
+
+<Base
+  title="Timeline"
+  description="Interactive career timeline for Brian L. Pitre, from Graphic Controls in 1967 through SkyOp drone training."
+>
+  <div class="mx-auto max-w-3xl px-5 py-14">
+    <p class="text-xs tracking-[0.18em] text-gold uppercase">Timeline</p>
+    <h1 class="mt-3 font-display text-5xl text-sea">Year by year</h1>
+    <p class="mt-4 max-w-prose leading-7 text-muted">
+      Filter by the kind of work. Dates overlap where the résumé overlaps — military leave inside Graphic Controls, school during those same years, and SkyOp beginning while dockside.net was still operating. Nothing here is inferred past the résumé.
+    </p>
+
+    <div class="timeline-ui mt-8">
+      <fieldset>
+        <legend class="sr-only">Filter the timeline by era</legend>
+        <div class="flex flex-wrap gap-2">
+          {
+            eras.map((era) => (
+              <>
+                <input type="radio" name="era" id={`era-${era.id}`} checked={era.id === "all"} />
+                <label
+                  for={`era-${era.id}`}
+                  class="cursor-pointer border border-line bg-foam px-3 py-1.5 text-sm"
+                >
+                  {era.label}
+                </label>
+              </>
+            ))
+          }
+        </div>
+      </fieldset>
+
+      <ol class="mt-10 border-l border-line">
+        {
+          ordered.map((role) => (
+            <li class="entry relative py-6 pl-6" data-era={role.era}>
+              <span class="absolute top-8 -left-[5px] h-2.5 w-2.5 rounded-full bg-gold" aria-hidden="true" />
+              <p class="text-xs tracking-[0.16em] text-gold uppercase">{role.years}</p>
+              <h2 class="mt-1 font-display text-3xl text-sea">
+                <a class="hover:underline" href={href(`/ventures/${role.slug}/`)}>{role.org}</a>
+              </h2>
+              <p class="text-sm text-muted">{role.role}</p>
+              <p class="mt-3 leading-7">{role.lede}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</Base>

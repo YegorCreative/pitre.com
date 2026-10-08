@@ -1,0 +1,84 @@
+---
+import Base from "../layouts/Base.astro";
+import Photo from "../components/Photo.astro";
+import { href } from "../data/site";
+
+const decades = [
+  {
+    id: "mainframes",
+    years: "1967–1976",
+    title: "Mainframes",
+    body: "Graphic Controls ran payroll, financial, and manufacturing work on IBM 1401, 1440, 360, and 370 systems. Pitre’s own path on those machines was operator, then programmer, then systems analyst, then project manager.",
+  },
+  {
+    id: "minicomputers",
+    years: "1976–1982",
+    title: "Minicomputers and early micros",
+    body: "Data General minicomputers were the product at his first sales job and again at Collective Computer Marketing, alongside Zilog microcomputers. CCM sold turnkey small-business systems and a high-level program generator. At Prime he sold general-purpose computers into CAD/CAM, office automation, engineering, communications, and data processing.",
+  },
+  {
+    id: "cad",
+    years: "1982–1987",
+    title: "CAD/CAM",
+    body: "Scientific Calculations built CAD/CAM for electronic design automation. Cygnet Group, which he co-founded next, distributed personal-computer CAD/CAM: Viewlogic, and mechanical systems from Supercads and McDonnell Douglas 3D Graphixx.",
+  },
+  {
+    id: "personal",
+    years: "1987–1993",
+    title: "Personal computers",
+    body: "The Kodak work at Wang covered minicomputers, image systems, and PC LANs. At Microlytics the products were linguistic: spell checkers, thesauri, and translators, licensed to personal-computer companies. Selectronics, the other half of that Xerox venture, sold handheld computers and custom electronic publishing into OEM and consumer electronics.",
+  },
+  {
+    id: "internet",
+    years: "1993–2016",
+    title: "Compression, discs, and the internet",
+    body: "Data Compression, Inc. licensed a toolkit for text and directory data on magnetic media, ROM, and CD-ROM, aimed at telephone-directory applications. DockSide Equipment, renamed after the Kap Strap sale, built digital marketing for direct-response television, CD-ROM, and online selling. dockside.net followed with SMART Internet Marketing: mass email, surveys, sweepstakes, and marketing tracking.",
+  },
+  {
+    id: "drones",
+    years: "2013 onward",
+    title: "Small unmanned aircraft",
+    body: "SkyOp’s product is training, not an airframe. The résumé describes courseware that is licensed to partners and taught directly, for schools, sUAS manufacturers, public safety, and businesses. The point he states is safe, lawful, effective use.",
+  },
+];
+---
+
+<Base
+  title="Technology"
+  description="Technology through the decades of Brian L. Pitre’s career: IBM mainframes, minicomputers, CAD/CAM, personal computers, the internet, and drones."
+>
+  <div class="mx-auto max-w-3xl px-5 py-14">
+    <p class="text-xs tracking-[0.18em] text-gold uppercase">Technology through the decades</p>
+    <h1 class="mt-3 font-display text-5xl text-sea">The machines he sold, ran, or taught</h1>
+    <p class="mt-4 leading-7 text-muted">
+      This is not a general history of computing. It is the equipment named on his résumé, in the order he met it. He did not design the IBM 370 or the personal computer. He operated, sold, licensed, or taught what each decade put in front of him.
+    </p>
+    <ol class="mt-8 flex flex-wrap gap-2 text-sm">
+      {decades.map((decade) => (
+        <li><a class="border border-line px-3 py-1.5 hover:border-gold" href={`#${decade.id}`}>{decade.title}</a></li>
+      ))}
+    </ol>
+
+    {
+      decades.map((decade) => (
+        <section id={decade.id} class="mt-12 border-t border-line pt-8">
+          <p class="text-xs tracking-[0.16em] text-gold uppercase">{decade.years}</p>
+          <h2 class="mt-2 font-display text-4xl text-sea">{decade.title}</h2>
+          <p class="mt-4 leading-8">{decade.body}</p>
+        </section>
+      ))
+    }
+
+    <figure class="mt-12">
+      <Photo
+        variant="class"
+        alt="A SkyOp classroom. Brian Pitre teaches while the screen reads Introduction to sUAS."
+        sizes="(min-width: 768px) 48rem, 100vw"
+      />
+      <figcaption class="mt-2 text-sm text-muted">
+        The latest machine in the sequence is the small unmanned aircraft, taught rather than sold from a branch office.
+        <a class="underline decoration-gold underline-offset-4" href={href("/ventures/skyop/")}> SkyOp</a>
+      </figcaption>
+    </figure>
+  </div>
+</Base>

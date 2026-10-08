@@ -1,0 +1,53 @@
+---
+import Base from "../../layouts/Base.astro";
+import Photo from "../../components/Photo.astro";
+import { href, roles, type Role } from "../../data/site";
+
+export function getStaticPaths() {
+  return roles.map((role) => ({
+    params: { slug: role.slug },
+    props: { role },
+  }));
+}
+
+interface Props {
+  role: Role;
+}
+
+const { role } = Astro.props;
+const index = roles.findIndex((item) => item.slug === role.slug);
+const previous = roles[index - 1];
+const next = roles[index + 1];
+---
+
+<Base title={role.org} description={`${role.role} at ${role.org}. ${role.lede}`} image={role.slug === "skyop" ? "/images/brian-skyop-class.jpg" : undefined}>
+  <article class="mx-auto max-w-3xl px-5 py-14">
+    <p class="text-xs tracking-[0.18em] text-gold uppercase">{role.years}</p>
+    <h1 class="mt-3 font-display text-5xl text-sea">{role.org}</h1>
+    <p class="mt-3 text-lg text-muted">{role.role}</p>
+    {role.founded && <p class="mt-4 text-xs tracking-[0.16em] uppercase">Founded or co-founded</p>}
+    <p class="mt-6 text-lg leading-8">{role.lede}</p>
+    <ul class="mt-6 grid list-disc gap-3 pl-5 leading-7">
+      {role.points.map((point) => <li>{point}</li>)}
+    </ul>
+
+    {
+      role.slug === "skyop" && (
+        <figure class="my-10">
+          <Photo
+            variant="class"
+            alt="Brian Pitre teaching a SkyOp Introduction to sUAS class, with the SkyOp logo on the screen behind him."
+            sizes="(min-width: 768px) 48rem, 100vw"
+          />
+          <figcaption class="mt-2 text-sm text-muted">Introduction to sUAS.</figcaption>
+        </figure>
+      )
+    }
+
+    <nav class="mt-12 flex flex-wrap justify-between gap-4 border-t border-line pt-6 text-sm" aria-label="Adjacent roles">
+      {previous ? <a class="underline decoration-gold underline-offset-4" href={href(`/ventures/${previous.slug}/`)}>{previous.org}</a> : <span />}
+      <a href={href("/ventures/")}>All ventures</a>
+      {next ? <a class="underline decoration-gold underline-offset-4" href={href(`/ventures/${next.slug}/`)}>{next.org}</a> : <span />}
+    </nav>
+  </article>
+</Base>

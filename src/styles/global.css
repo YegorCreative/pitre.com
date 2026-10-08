@@ -1,0 +1,140 @@
+@import "@fontsource-variable/fraunces/wght.css";
+@import "@fontsource-variable/outfit/wght.css";
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces Variable", Georgia, "Times New Roman", serif;
+  --font-sans: "Outfit Variable", "Avenir Next", "Segoe UI", sans-serif;
+  --color-ink: #172027;
+  --color-paper: #f4f0e7;
+  --color-foam: #faf7f2;
+  --color-sea: #163646;
+  --color-sea-deep: #0c181e;
+  --color-gold: #7a5628;
+  --color-gold-soft: #e7d5b4;
+  --color-muted: #44525b;
+  --color-line: #ddd4c6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(900px 420px at 100% -10%, rgb(231 213 180 / 45%), transparent 55%),
+    var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 80;
+  background: var(--color-sea);
+  color: var(--color-foam);
+  padding: 0.6rem 0.9rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.timeline-ui input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.timeline-ui input:focus-visible + label {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+.timeline-ui input:checked + label {
+  background: var(--color-sea);
+  color: var(--color-foam);
+  border-color: var(--color-sea);
+}
+
+.timeline-ui:has(#era-mainframe:checked) .entry:not([data-era="mainframe"]),
+.timeline-ui:has(#era-service:checked) .entry:not([data-era="service"]),
+.timeline-ui:has(#era-education:checked) .entry:not([data-era="education"]),
+.timeline-ui:has(#era-minicomputer:checked) .entry:not([data-era="minicomputer"]),
+.timeline-ui:has(#era-workstation:checked) .entry:not([data-era="workstation"]),
+.timeline-ui:has(#era-personal:checked) .entry:not([data-era="personal"]),
+.timeline-ui:has(#era-internet:checked) .entry:not([data-era="internet"]),
+.timeline-ui:has(#era-drone:checked) .entry:not([data-era="drone"]) {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0.35;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rise {
+    animation: none;
+  }
+}
+
+details > summary {
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}

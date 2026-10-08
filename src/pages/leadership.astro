@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import { href } from "../data/site";
+
+const posts = [
+  {
+    org: "Data General",
+    title: "The first quota",
+    text: "Sales engineer, then Senior Sales Engineer in charge of the Buffalo office and new-account leader for the Eastern Region. Salesman of the Quarter three months in. Rookie of the Year that first year. Annual sales in excess of one million dollars.",
+    href: "/ventures/data-general/",
+  },
+  {
+    org: "Prime Computer",
+    title: "A branch",
+    text: "Branch sales manager, Upstate New York. Four sales representatives and two technical support representatives. Campaigns across CAD/CAM, office automation, engineering, communications, and data processing.",
+    href: "/ventures/prime-computer/",
+  },
+  {
+    org: "Scientific Calculations",
+    title: "A national field force",
+    text: "Director of Sales for North America, reporting to the president. Field operations, marketing direction, technical support, sales training, and national accounts. More than sixty people in the field organization. Corporate sales in excess of $43 million. Promoted from Eastern Region Manager after that region led the company in 1983. INC 500, 1984.",
+    href: "/ventures/scientific-calculations/",
+  },
+  {
+    org: "Wang Laboratories",
+    title: "One account, worldwide",
+    text: "Account executive and the primary interface between Wang and Eastman Kodak worldwide. He managed the direct marketing team on the local Kodak account and records $3.5 million in annual revenue. The systems were minicomputers, image systems, and PC LANs.",
+    href: "/ventures/wang/",
+  },
+  {
+    org: "Microlytics",
+    title: "OEM, direct, and distributors",
+    text: "Vice president of sales and marketing. Worldwide OEM licensing, plus direct representatives, commission-only representatives, and distributors in the United States and overseas. Promoted from Eastern Region Sales Manager to Director of Custom Products, then vice president.",
+    href: "/ventures/microlytics/",
+  },
+];
+---
+
+<Base
+  title="Leadership"
+  description="Sales and management roles held by Brian L. Pitre, including Scientific Calculations, Wang’s Eastman Kodak account, and Microlytics."
+>
+  <div class="mx-auto max-w-3xl px-5 py-14">
+    <p class="text-xs tracking-[0.18em] text-gold uppercase">Leadership and expertise</p>
+    <h1 class="mt-3 font-display text-5xl text-sea">Organizations he was asked to run</h1>
+    <p class="mt-4 leading-7 text-muted">
+      The résumé’s management record is specific: headcount, a revenue figure, a promotion, a territory. Those are the claims below. They are his numbers, not an estimate added later.
+    </p>
+    <div class="mt-10 grid gap-6">
+      {
+        posts.map((post) => (
+          <section class="border-t border-line pt-6">
+            <p class="text-xs tracking-[0.16em] text-gold uppercase">{post.org}</p>
+            <h2 class="mt-2 font-display text-3xl text-sea">{post.title}</h2>
+            <p class="mt-3 leading-7">{post.text}</p>
+            <a class="mt-3 inline-block text-sm underline decoration-gold underline-offset-4" href={href(post.href)}>
+              Company record
+            </a>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</Base>

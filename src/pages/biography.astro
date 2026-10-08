@@ -1,0 +1,65 @@
+---
+import Base from "../layouts/Base.astro";
+import Photo from "../components/Photo.astro";
+import { href, site } from "../data/site";
+---
+
+<Base
+  title="Biography"
+  description="Biography of Brian L. Pitre: IBM mainframes at Graphic Controls, sales leadership, six companies founded or co-founded, and SkyOp drone training."
+>
+  <article class="mx-auto max-w-3xl px-5 py-14">
+    <p class="text-xs tracking-[0.18em] text-gold uppercase">Biography</p>
+    <h1 class="mt-3 font-display text-5xl text-sea sm:text-6xl">Brian L. Pitre</h1>
+    <p class="mt-4 text-lg leading-8 text-muted">
+      Serial entrepreneur with a record in company creation, operations, and sales and marketing. The résumé counts more than fifty years across the computer industry, and names people skills as part of that record.
+    </p>
+
+    <figure class="my-10">
+      <Photo
+        variant="water"
+        alt="Brian Pitre seated on a boat, holding a large silver fish with a yellow tail, under a bright scattered sky."
+        sizes="(min-width: 768px) 48rem, 100vw"
+      />
+      <figcaption class="mt-2 text-sm text-muted">On the water, February 2025.</figcaption>
+    </figure>
+
+    <div class="grid gap-5 leading-8">
+      <p>
+        He started at Graphic Controls Corporation in June 1967 and stayed, with military leave, until October 1976. The path inside the company ran from computer operator to programmer, systems analyst, and project manager on IBM 1401, 1440, 360, and 370 systems. The applications were payroll, finance, and manufacturing.
+      </p>
+      <p>
+        From 1968 to 1971 he served in the United States Army as a General Electronic Cryptographic Repairman. He held a Top Secret clearance with crypto access and served in Vietnam in 1969 and 1970. From 1971 to 1976 he studied business management at Millard Fillmore College, State University of New York at Buffalo.
+      </p>
+      <p>
+        The next decade was minicomputers and the first companies of his own. Data General hired him as a sales engineer in 1976. He made Salesman of the Quarter within three months and Rookie of the Year that first year, and left in charge of the Buffalo office. In 1978 he co-founded Collective Computer Marketing to sell turnkey small-business systems and a program generator on Data General and Zilog machines. In 1979 Prime Computer made him branch sales manager for Upstate New York.
+      </p>
+      <p>
+        From 1982 to 1985 he was Director of Sales for North America at Scientific Calculations, an electronic-design CAD/CAM company. He reported to the president, built a field organization of more than sixty people, and the company posted sales in excess of $43 million. INC magazine placed it on the 1984 INC 500. He then co-founded Cygnet Group to distribute personal-computer CAD/CAM products, including Viewlogic.
+      </p>
+      <p>
+        Wang Laboratories assigned him to Eastman Kodak worldwide from 1987 to 1989, an account he records at $3.5 million a year. From 1989 to 1993 he was vice president of sales and marketing at Selectronics / Microlytics, a Xerox venture, licensing linguistic software to personal-computer companies including Microsoft, Apple, Claris, and Lotus.
+      </p>
+      <p>
+        The 1990s turn toward software products and the public network. He founded Data Compression, Inc., sold the Kap Strap hat retainer through the company he had started in 1984, and in 1995 founded dockside.net. SMART Internet Marketing — mass email, surveys, sweepstakes, and tracking — was used by more than fifty organizations through February 2016.
+      </p>
+      <p>
+        In January 2013 he co-founded SkyOp LLC. The résumé, dated September 2, 2020, still lists him as managing member. SkyOp develops drone-training courseware, licenses it, and teaches it, including to schools, manufacturers, public-safety agencies, and businesses. The photograph below is from one of those rooms.
+      </p>
+      <p>He is the father of Kelli and Marc. He is based in {site.location}. This site does not publish his street address.</p>
+    </div>
+
+    <figure class="my-10">
+      <Photo
+        variant="class"
+        alt="Brian Pitre teaching a SkyOp Introduction to sUAS class. Students sit at laptops while the projector shows the SkyOp name."
+        sizes="(min-width: 768px) 48rem, 100vw"
+      />
+      <figcaption class="mt-2 text-sm text-muted">SkyOp, Introduction to sUAS.</figcaption>
+    </figure>
+
+    <p class="text-sm">
+      <a class="underline decoration-gold underline-offset-4" href={href("/timeline/")}>The same record, year by year</a>
+    </p>
+  </article>
+</Base>

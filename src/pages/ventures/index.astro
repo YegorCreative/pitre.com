@@ -1,0 +1,31 @@
+---
+import Base from "../../layouts/Base.astro";
+import { href, roles } from "../../data/site";
+
+const ordered = [...roles].sort((a, b) => b.sort.localeCompare(a.sort));
+---
+
+<Base
+  title="Ventures"
+  description="Companies and employers in Brian L. Pitre’s career, including SkyOp, dockside.net, Scientific Calculations, Microlytics, and Graphic Controls."
+>
+  <div class="mx-auto max-w-6xl px-5 py-14">
+    <p class="text-xs tracking-[0.18em] text-gold uppercase">Companies and ventures</p>
+    <h1 class="mt-3 max-w-3xl font-display text-5xl text-sea">The organizations</h1>
+    <p class="mt-4 max-w-2xl leading-7 text-muted">
+      Six were his to start or co-start. The others were sales and management seats inside companies already in the market. Each page stays inside what the résumé says.
+    </p>
+    <div class="mt-10 grid gap-4 md:grid-cols-2">
+      {
+        ordered.map((role) => (
+          <a class="border border-line bg-foam p-5 hover:border-gold" href={href(`/ventures/${role.slug}/`)}>
+            <p class="text-xs tracking-[0.14em] text-gold uppercase">{role.years}</p>
+            <h2 class="mt-2 font-display text-3xl text-sea">{role.org}</h2>
+            <p class="mt-1 text-sm text-muted">{role.role}</p>
+            {role.founded && <p class="mt-3 text-xs tracking-[0.14em] uppercase">Founder or co-founder</p>}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Base>

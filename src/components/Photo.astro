@@ -1,0 +1,48 @@
+---
+interface Props {
+  variant: "water" | "class";
+  alt: string;
+  priority?: boolean;
+  sizes?: string;
+  class?: string;
+}
+
+const {
+  variant,
+  alt,
+  priority = false,
+  sizes = "(min-width: 1024px) 40rem, 100vw",
+  class: className = "",
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const spec =
+  variant === "water"
+    ? {
+        webp: `${base}images/brian-on-the-water-1200.webp 1200w, ${base}images/brian-on-the-water.webp 2000w`,
+        src: `${base}images/brian-on-the-water-1200.jpg`,
+        width: 2000,
+        height: 1500,
+      }
+    : {
+        webp: `${base}images/brian-skyop-class.webp 1200w`,
+        src: `${base}images/brian-skyop-class.jpg`,
+        width: 1200,
+        height: 677,
+      };
+---
+
+<picture class:list={["block min-w-0 max-w-full overflow-hidden", className]}>
+  <source type="image/webp" srcset={spec.webp} sizes={sizes} />
+  <img
+    src={spec.src}
+    alt={alt}
+    width={spec.width}
+    height={spec.height}
+    sizes={sizes}
+    loading={priority ? "eager" : "lazy"}
+    fetchpriority={priority ? "high" : "auto"}
+    decoding="async"
+    class="h-auto max-h-full w-full max-w-full object-cover"
+  />
+</picture>

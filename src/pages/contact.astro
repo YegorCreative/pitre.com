@@ -1,0 +1,55 @@
+---
+import Base from "../layouts/Base.astro";
+import { site } from "../data/site";
+---
+
+<Base
+  title="Contact"
+  description="Contact Brian L. Pitre in Canandaigua, New York. Phone (585) 230-0550. No street address is published."
+>
+  <div class="mx-auto grid max-w-6xl gap-12 px-5 py-14 md:grid-cols-2">
+    <div>
+      <p class="text-xs tracking-[0.18em] text-gold uppercase">Contact</p>
+      <h1 class="mt-3 font-display text-5xl text-sea">Reach Brian</h1>
+      <p class="mt-4 max-w-md leading-7">
+        He is based in {site.location}. The street address is not listed. The telephone number is the one on his résumé.
+      </p>
+      <p class="mt-8 font-display text-4xl text-sea">
+        <a href={site.phoneHref}>{site.phoneDisplay}</a>
+      </p>
+      <p class="mt-2 text-sm text-muted">{site.location}</p>
+    </div>
+
+    <div class="border border-line bg-foam p-6">
+      {
+        site.formEndpoint ? (
+          <form action={site.formEndpoint} method="POST" class="grid gap-4">
+            <p class="text-sm leading-6">Send a note. It goes through an external form host, not a server on this site.</p>
+            <label class="grid gap-1 text-sm">
+              Name
+              <input class="border border-line bg-paper px-3 py-2" type="text" name="name" autocomplete="name" required />
+            </label>
+            <label class="grid gap-1 text-sm">
+              Email
+              <input class="border border-line bg-paper px-3 py-2" type="email" name="email" autocomplete="email" required />
+            </label>
+            <label class="grid gap-1 text-sm">
+              Message
+              <textarea class="min-h-32 border border-line bg-paper px-3 py-2" name="message" required />
+            </label>
+            <input class="hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <input type="hidden" name="_subject" value="Message from pitre.com" />
+            <button class="bg-sea px-4 py-3 text-sm text-foam" type="submit">Send</button>
+          </form>
+        ) : (
+          <div>
+            <h2 class="font-display text-2xl text-sea">A note, by phone</h2>
+            <p class="mt-3 text-sm leading-6">
+              Call {site.phoneDisplay}. The site is static, so it does not accept mail on its own. A written form can be attached later through Formspree without adding a server.
+            </p>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</Base>

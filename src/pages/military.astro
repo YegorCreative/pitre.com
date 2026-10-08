@@ -1,0 +1,41 @@
+---
+import Base from "../layouts/Base.astro";
+import { href } from "../data/site";
+---
+
+<Base
+  title="Military service"
+  description="Brian L. Pitre served in the U.S. Army from 1968 to 1971 as a cryptographic equipment repairman, including Vietnam in 1969 and 1970."
+>
+  <article class="mx-auto max-w-3xl px-5 py-14">
+    <p class="text-xs tracking-[0.18em] text-gold uppercase">Military service</p>
+    <h1 class="mt-3 font-display text-5xl text-sea">United States Army, 1968–1971</h1>
+    <p class="mt-6 text-lg leading-8">
+      The Graphic Controls years include military leave. From 1968 to 1971 Brian L. Pitre served as a General Electronic Cryptographic Repairman, MOS 31S30.
+    </p>
+    <dl class="mt-8 grid gap-4 sm:grid-cols-2">
+      <div class="border border-line bg-foam p-4">
+        <dt class="text-xs tracking-[0.16em] text-muted uppercase">Specialty</dt>
+        <dd class="mt-2 font-display text-2xl text-sea">31S30</dd>
+        <dd class="text-sm">General Electronic Cryptographic Repairman</dd>
+      </div>
+      <div class="border border-line bg-foam p-4">
+        <dt class="text-xs tracking-[0.16em] text-muted uppercase">Clearance, at the time</dt>
+        <dd class="mt-2 font-display text-2xl text-sea">Top Secret</dd>
+        <dd class="text-sm">With crypto access. Stated as history, not as a current clearance.</dd>
+      </div>
+      <div class="border border-line bg-foam p-4 sm:col-span-2">
+        <dt class="text-xs tracking-[0.16em] text-muted uppercase">Vietnam</dt>
+        <dd class="mt-2 font-display text-2xl text-sea">1969–1970</dd>
+      </div>
+    </dl>
+    <p class="mt-8 leading-8">
+      He returned to Graphic Controls and remained there until October 1976, by then a project manager and senior systems analyst on the IBM mainframes. The same years include his business-management studies at the State University of New York at Buffalo.
+    </p>
+    <p class="mt-8 text-sm">
+      <a class="underline decoration-gold underline-offset-4" href={href("/ventures/us-army/")}>Service record</a>
+      <span aria-hidden="true"> · </span>
+      <a class="underline decoration-gold underline-offset-4" href={href("/ventures/graphic-controls/")}>Graphic Controls</a>
+    </p>
+  </article>
+</Base>
