@@ -26,7 +26,7 @@ const ordered = [...roles].sort((a, b) => a.sort.localeCompare(b.sort));
                 <input type="radio" name="era" id={`era-${era.id}`} checked={era.id === "all"} />
                 <label
                   for={`era-${era.id}`}
-                  class="cursor-pointer border border-line bg-foam px-3 py-1.5 text-sm"
+                  class="inline-flex min-h-11 cursor-pointer items-center border border-line bg-foam px-3 text-sm"
                 >
                   {era.label}
                 </label>

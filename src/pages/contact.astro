@@ -27,15 +27,15 @@ import { site } from "../data/site";
             <p class="text-sm leading-6">Send a note. It goes through an external form host, not a server on this site.</p>
             <label class="grid gap-1 text-sm">
               Name
-              <input class="border border-line bg-paper px-3 py-2" type="text" name="name" autocomplete="name" required />
+              <input class="border border-line bg-paper px-3 py-3 text-base" type="text" name="name" autocomplete="name" required />
             </label>
             <label class="grid gap-1 text-sm">
               Email
-              <input class="border border-line bg-paper px-3 py-2" type="email" name="email" autocomplete="email" required />
+              <input class="border border-line bg-paper px-3 py-3 text-base" type="email" name="email" autocomplete="email" required />
             </label>
             <label class="grid gap-1 text-sm">
               Message
-              <textarea class="min-h-32 border border-line bg-paper px-3 py-2" name="message" required />
+              <textarea class="min-h-32 border border-line bg-paper px-3 py-3 text-base" name="message" required />
             </label>
             <input class="hidden" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" />
             <input type="hidden" name="_subject" value="Message from pitre.com" />
